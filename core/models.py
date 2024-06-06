@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager
 
 
 # Create your models here.
@@ -21,19 +20,9 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
+    
 
-
-class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
-        if not email:
-            raise ValueError('O email é obrigatório.')
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        return self.create_user(email, password, **extra_fields)
+    class Meta:  # adicionar isso
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
+        ordering = ['id']
