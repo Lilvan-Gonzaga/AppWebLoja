@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    {% load static %}
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <!-- Link para o Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>VOLCANO PRATAS</title>
 </head>
 <body>
+    <h1>Produtos Disponíveis</h1>
+    {% for produto in produtos %}
+        <div>
+            <h2>{{ produto.nome }}</h2>
+            <p>Preço: R$ {{ produto.preco }}</p>
+            <img src="{{ produto.imagem.url }}">
+            <p>Descrição: {{ produto.descricao }}</p>
+            <button onclick="window.location.href='{{ produto.url_whatsapp }}'">Comprar via WhatsApp</button>
+        </div>
+    {% endfor %}
     <div class="buttonzap">
         <a href="https://api.whatsapp.com/send?phone=6292628250" class="icon" target="_blank"><i class='fab fa-whatsapp'></i></a>
     </div>

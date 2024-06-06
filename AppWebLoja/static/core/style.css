@@ -1,0 +1,46 @@
+/* style.css */
+
+/* Estilo para o título principal */
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+/* Estilo para os títulos dos produtos */
+h2 {
+    color: green;
+}
+
+/* Estilo para os preços dos produtos */
+p {
+    color: red;
+}
+
+/* Estilo para os botões */
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+
+/* Estilo para o ícone do WhatsApp */
+.buttonzap .icon {
+    display: inline-block;
+    background-color: #25d366;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.buttonzap .icon:hover {
+    background-color: #128c7e;
+}
