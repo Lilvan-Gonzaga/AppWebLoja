@@ -23,16 +23,6 @@ class Produto(models.Model):
         return self.nome
 
 
-class Cliente(models.Model):
-    nome = models.CharField(max_length=100)
-    email = models.EmailField()
-    descricao = models.TextField()
-    telefone = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.nome
-
-
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
