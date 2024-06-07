@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <!-- Link para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>VOLCANO PRATAS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #343a40;
+            text-align: center; /* Centraliza o conteúdo da navbar */
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            margin-right: 15px;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+            font-weight: bold;
+            margin: auto; /* Centraliza o conteúdo da navbar */
+            display: block; /* Para aplicar a margem automática */
+        }
+        .navbar-brand:hover {
+            color: #ffc107 !important;
+        }
+        .content {
+            padding: 50px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            display: flex; /* Define os itens como flexíveis */
+            align-items: center; /* Alinha os itens verticalmente */
+        }
+        .product img {
+            max-width: 200px; /* Define a largura máxima para a imagem */
+            height: auto;
+            border-radius: 5px;
+            margin-right: 20px; /* Adiciona uma margem à direita da imagem */
+        }
+        .product-details {
+            flex-grow: 1; /* Faz com que o detalhe do produto ocupe o espaço restante */
+        }
+        .product-name {
+            font-weight: bold;
+        }
+        .product-description {
+            margin-bottom: 10px; /* Adiciona uma margem inferior à descrição */
+        }
+        .product-price {
+            margin-top: auto; /* Move o preço para a parte inferior */
+            font-weight: bold;
+        }
+        .product button {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            padding: 8px 15px; /* Reduz o padding do botão */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            font-size: 14px; /* Reduz o tamanho da fonte do botão */
+            width: 100%; /* Define a largura do botão como 100% */
+        }
+        .product button:hover {
+            background-color: #1ebe57;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .buttonzap {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .buttonzap .icon {
+            font-size: 30px; /* Reduz o tamanho do ícone */
+            color: #25d366;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+            max-width: 40px; /* Define a largura máxima para evitar ultrapassar as bordas */
+            max-height: 40px; /* Define a altura máxima para evitar ultrapassar as bordas */
+        }
+        .buttonzap .icon:hover {
+            color: #1ebe57;
+        }
+        /* Reduz o tamanho do título "Produtos Disponíveis" */
+        .content h1 {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">VOLCANO PRATAS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Removido os itens de menu "Produtos", "Sobre" e "Contato" -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container text-center"> <!-- Adicionado o container com centralização -->
+        <div class="content">
+            <h1>Produtos Disponíveis</h1>
+            {% for produto in produtos %}
+                <div class="product">
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                    <div class="product-details">
+                        <h2 class="product-name">{{ produto.nome }}</h2>
+                        <p class="product-description">{{ produto.descricao }}</p> <!-- Descrição aqui -->
+                        <p class="product-price">Preço: R$ {{ produto.preco }}</p>
+                        <button onclick="window.location.href='https://api.whatsapp.com/send?phone=6292628250&text=Olá, estou interessado no produto {{ produto.nome }}'">Comprar via WhatsApp</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="buttonzap">
+        <a href="https://api.whatsapp.com/send?phone=6292628250" class="icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 VOLCANO PRATAS. Todos os direitos reservados.
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@
