@@ -10,6 +10,10 @@ def lista_produtos(request):
     produtos = Produto.objects.filter(disponivel=True)
     return render(request, 'core/home.html', {'produtos': produtos})
 
+def lista_produtos_admin(request):
+    produtos = Produto.objects.filter(disponivel=True)
+    return render(request, 'core/home_adm.html', {'produtos': produtos})
+
 # View para adicionar produtos
 def adc_produtos(request):
     if request.method == 'POST':  # Se o método for POST
